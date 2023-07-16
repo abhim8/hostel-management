@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: HOSTEL_MANAGEMENT
+  profiles:
+    active: default
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "${MYSQL_URL:jdbc:mysql://localhost:3306/hostel_management}"
+    username: "${DB_USERNAME:root}"
+    password: "${DB_PASSWORD:rootdev1}"
+    hikari:
+      connection-timeout: "${CONNECTION_TIMEOUT:5000}"
+      maximum-pool-size: "${MAX_POOL_SIZE:5}"
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.spatial.dialect.mysql.MySQL5InnoDBSpatialDialect
+      ddl-auto: none
+    generate-ddl: false
+    show-sql: false
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL5InnoDBSpatialDialect
+
+server:
+  port: 8000
+  servlet:
+    contextPath: /api/hostel-management
+  forward-headers-strategy: FRAMEWORK
+
+logging:
+  level:
+    root: INFO
