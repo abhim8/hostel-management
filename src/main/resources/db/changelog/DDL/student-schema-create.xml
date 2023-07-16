@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="student-schema-create" author="abhilashmovva">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="student"/>
+            </not>
+        </preConditions>
+        <createTable tableName="student"
+                     remarks="Student Data">
+
+            <column name="id" type="varchar(36)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(40)">
+            </column>
+            <column name="gender" type="varchar(10)">
+            </column>
+            <column name="occupancy" type="varchar(40)">
+            </column>
+            <column name="address" type="varchar(60)">
+            </column>
+            <column name="city" type="varchar(40)">
+            </column>
+            <column name="state" type="varchar(40)">
+            </column>
+            <column name="pin" type="varchar(10)">
+            </column>
+            <column name="mobile" type="varchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="emergency_mobile" type="varchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="father_name" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="organization_name" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="organization_address" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="organization_city" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="organization_pin" type="varchar(10)">
+                <constraints nullable="false" />
+            </column>
+            <column name="id_card_type" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="id_card_number" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createIndex indexName="id_idx" tableName="student">
+            <column name="id"/>
+        </createIndex>
+
+        <!-- for manual rollback-->
+        <rollback>
+            <dropTable tableName="student"/>
+        </rollback>
+
+    </changeSet>
+</databaseChangeLog>

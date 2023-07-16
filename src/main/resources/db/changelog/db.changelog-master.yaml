@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/DDL/student-schema-create.xml
+  - include:
+      file: db/changelog/DDL/login-schema-create.xml
